@@ -6,7 +6,7 @@
 /*   By: mprokope <mprokope@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 18:44:07 by mprokope          #+#    #+#             */
-/*   Updated: 2026/05/09 18:57:55 by mprokope         ###   ########.fr       */
+/*   Updated: 2026/05/19 21:07:53 by mprokope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_data	*init_data(long num_p)
 		return (NULL);
 	data->forks = malloc(sizeof(pthread_mutex_t) * num_p);
 	if (!data->forks)
-		return(free(data), NULL);
+		return (free(data), NULL);
 	data->dead = 0;
 	pthread_mutex_init(&data->print_lock, NULL);
 	pthread_mutex_init(&data->death_lock, NULL);

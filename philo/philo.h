@@ -6,7 +6,7 @@
 /*   By: mprokope <mprokope@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:47:21 by mprokope          #+#    #+#             */
-/*   Updated: 2026/05/09 19:00:58 by mprokope         ###   ########.fr       */
+/*   Updated: 2026/05/19 21:12:38 by mprokope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@
 
 # define FIRST_USE "Usage: <num_of_philos> <time_to_die> "
 # define SECOND_USE "<time_to_eat> <time_to_sleep> | <num_to_be_full>\n"
-# define FULL_USE FIRST_USE SECOND_USE
 
-typedef struct	s_info
+typedef struct s_info
 {
 	long	number_of_philos;
 	time_t	time_to_die;
@@ -33,7 +32,7 @@ typedef struct	s_info
 	long	to_be_full;
 }				t_info;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_lock;
@@ -42,7 +41,7 @@ typedef struct	s_data
 	t_info			*info;
 }				t_data;
 
-typedef struct	s_philo
+typedef struct s_philo
 {
 	long			num_p;
 	long			last_meal;

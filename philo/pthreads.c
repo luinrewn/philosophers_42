@@ -6,7 +6,7 @@
 /*   By: mprokope <mprokope@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 19:18:17 by mprokope          #+#    #+#             */
-/*   Updated: 2026/05/09 18:54:11 by mprokope         ###   ########.fr       */
+/*   Updated: 2026/05/19 21:07:15 by mprokope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	clean_pthreads_fail(pthread_t **thr, long i)
 	pthread_join((*thr)[i], NULL);
 	return (1);
 }
-//cloude sugested to switch thr to a ** pointer.
+
 int	create_threads(pthread_t **thr, long num, t_philo *philo)
 {
 	long	i;
