@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mprokope <mprokope@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: mprokope <mprokope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:47:21 by mprokope          #+#    #+#             */
-/*   Updated: 2026/05/19 21:12:38 by mprokope         ###   ########.fr       */
+/*   Updated: 2026/06/30 17:49:09 by mprokope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_data
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_lock;
 	pthread_mutex_t	death_lock;
+	// pthread_mutex_t	is_ready;
 	int				dead;
 	t_info			*info;
 }				t_data;

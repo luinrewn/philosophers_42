@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vlaid_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mprokope <mprokope@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: mprokope <mprokope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 17:51:20 by mprokope          #+#    #+#             */
-/*   Updated: 2026/05/08 16:54:32 by mprokope         ###   ########.fr       */
+/*   Updated: 2026/06/30 17:56:36 by mprokope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	check_input(int argc, char **argv)
 				return (0);
 			if (!ft_string_numeric(argv[i]))
 				return (0);
-			if (ft_atol(argv[i]) > 2147483647)
+			if (ft_atol(argv[i]) > 2147483647 || ft_atol(argv[i]) <= 0)
 				return (0);
 		}
 		return (1);
