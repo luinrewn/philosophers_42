@@ -6,7 +6,7 @@
 /*   By: mprokope <mprokope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 18:44:07 by mprokope          #+#    #+#             */
-/*   Updated: 2026/06/30 17:50:44 by mprokope         ###   ########.fr       */
+/*   Updated: 2026/06/30 18:42:22 by mprokope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_info	*populate_info(char **argv)
 	info->time_to_die = ft_atol(argv[2]);
 	info->time_to_eat = ft_atol(argv[3]);
 	info->time_to_sleep = ft_atol(argv[4]);
+	info->start_time = get_ms();
 	if (argv[5])
 		info->to_be_full = ft_atol(argv[5]);
 	else

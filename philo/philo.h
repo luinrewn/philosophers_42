@@ -6,7 +6,7 @@
 /*   By: mprokope <mprokope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:47:21 by mprokope          #+#    #+#             */
-/*   Updated: 2026/06/30 17:49:09 by mprokope         ###   ########.fr       */
+/*   Updated: 2026/06/30 18:40:44 by mprokope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_info
 {
 	long	number_of_philos;
 	time_t	time_to_die;
+	time_t	start_time;
 	time_t	time_to_eat;
 	time_t	time_to_sleep;
 	long	to_be_full;
