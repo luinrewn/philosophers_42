@@ -6,7 +6,7 @@
 /*   By: mprokope <mprokope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:47:21 by mprokope          #+#    #+#             */
-/*   Updated: 2026/06/30 18:40:44 by mprokope         ###   ########.fr       */
+/*   Updated: 2026/06/30 21:19:26 by mprokope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ typedef struct s_data
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_lock;
 	pthread_mutex_t	death_lock;
-	// pthread_mutex_t	is_ready;
+	long			full;
+	pthread_mutex_t	fool;
 	int				dead;
 	t_info			*info;
 }				t_data;
@@ -48,6 +49,7 @@ typedef struct s_philo
 	long			num_p;
 	long			last_meal;
 	long			meals_eaten;
+	long			first_time;
 	pthread_mutex_t	last_meal_lock;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
@@ -76,5 +78,6 @@ void	print_state(t_philo *philo, char *state);
 void	*philo_routine(void *arg);
 void	*monitoring(void *arg);
 int		dead_check(t_data *data);
+void	is_fool(t_philo *philo);
 
 #endif

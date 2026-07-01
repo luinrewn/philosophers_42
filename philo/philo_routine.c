@@ -6,7 +6,7 @@
 /*   By: mprokope <mprokope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 14:42:00 by mprokope          #+#    #+#             */
-/*   Updated: 2026/06/30 17:51:05 by mprokope         ###   ########.fr       */
+/*   Updated: 2026/07/01 17:14:50 by mprokope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,18 @@ int	dead_check(t_data *data)
 void	*solo_solo(t_philo *philo)
 {
 	print_state(philo, "has taken the fork");
-	usleep(philo->data->info->time_to_die);
+	better_sleep(philo->data->info->time_to_die);
 	return (NULL);
 }
 
 //even
 void	right_forkers(t_philo *philo)
 {
-	usleep(1000);
+	if (philo->first_time)
+	{
+		better_sleep(10);
+		philo->first_time = 0;
+	}
 	print_state(philo, "is thinking");
 	pthread_mutex_lock(philo->right_fork);
 	print_state(philo, "has taken a fork");
@@ -45,6 +49,7 @@ void	right_forkers(t_philo *philo)
 	philo->last_meal = get_ms();
 	if (philo->data->info->to_be_full > -1)
 		philo->meals_eaten++;
+	is_fool(philo);
 	pthread_mutex_unlock(&philo->last_meal_lock);
 	better_sleep(philo->data->info->time_to_eat);
 	pthread_mutex_unlock(philo->left_fork);
@@ -66,6 +71,7 @@ void	left_forkers(t_philo *philo)
 	philo->last_meal = get_ms();
 	if (philo->data->info->to_be_full > -1)
 		philo->meals_eaten++;
+	is_fool(philo);
 	pthread_mutex_unlock(&philo->last_meal_lock);
 	better_sleep(philo->data->info->time_to_eat);
 	pthread_mutex_unlock(philo->right_fork);
@@ -81,9 +87,16 @@ void	*philo_routine(void *arg)
 	philo = (t_philo *)arg;
 	if (philo->data->info->number_of_philos == 1)
 		return (solo_solo(philo));
-	while (!dead_check(philo->data) && !(philo->num_p % 2))
-		right_forkers(philo);
+	// while (!dead_check(philo->data) && !(philo->num_p % 2))
+	// 	right_forkers(philo);
+	// while (!dead_check(philo->data))
+	// 	left_forkers(philo);
 	while (!dead_check(philo->data))
-		left_forkers(philo);
+	{
+		if (philo->left_fork < philo->right_fork)
+			left_forkers(philo);
+		else
+			right_forkers(philo);
+	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: mprokope <mprokope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 18:20:40 by mprokope          #+#    #+#             */
-/*   Updated: 2026/06/30 17:50:29 by mprokope         ###   ########.fr       */
+/*   Updated: 2026/06/30 21:29:36 by mprokope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	*monitoring(void *arg)
 {
 	t_philo	*philo;
 	long	i;
+	long	full;
 
 	philo = (t_philo *)arg;
 	while (42)
@@ -65,11 +66,15 @@ void	*monitoring(void *arg)
 		{
 			if (!check_if_starved(&philo[i]))
 				return (NULL);
-			if (philo->data->info->to_be_full > -1 && philo[i].meals_eaten
-				>= philo->data->info->to_be_full)
-				if (!fullnes_check(philo))
-					return (exterminate(philo->data), NULL);
 			i++;
+		}
+		if (philo->data->info->to_be_full > -1)
+		{
+			pthread_mutex_lock(&philo->data->fool);
+			full = philo->data->full;
+			pthread_mutex_unlock(&philo->data->fool);
+			if (full == philo->data->info->number_of_philos)
+				return (exterminate(philo->data), NULL);
 		}
 		usleep(500);
 	}

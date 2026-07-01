@@ -6,11 +6,21 @@
 /*   By: mprokope <mprokope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 16:45:30 by mprokope          #+#    #+#             */
-/*   Updated: 2026/06/30 18:40:00 by mprokope         ###   ########.fr       */
+/*   Updated: 2026/06/30 21:18:47 by mprokope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	is_fool(t_philo *philo)
+{
+	if (philo->meals_eaten == philo->data->info->to_be_full)
+	{
+		pthread_mutex_lock(&philo->data->fool);
+		philo->data->full++;
+		pthread_mutex_unlock(&philo->data->fool);
+	}
+}
 
 long	get_ms(void)
 {
@@ -23,8 +33,17 @@ long	get_ms(void)
 void	better_sleep(long to_sleep)
 {
 	long	start;
-
+	long	rem;
+	
 	start = get_ms();
-	while (get_ms() - start < to_sleep)
-		usleep(100);
+	while (1)
+	{
+		rem = to_sleep - (get_ms() - start);
+		if (rem <= 0)
+			return ;
+		if (rem > 5)
+			usleep(rem * 500);
+		else
+			usleep(100);
+	}
 }
