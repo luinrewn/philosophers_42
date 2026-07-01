@@ -6,7 +6,7 @@
 /*   By: mprokope <mprokope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 18:44:07 by mprokope          #+#    #+#             */
-/*   Updated: 2026/06/30 21:15:58 by mprokope         ###   ########.fr       */
+/*   Updated: 2026/07/01 22:17:41 by mprokope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ t_data	*init_data(long num_p)
 		return (free(data), NULL);
 	data->dead = 0;
 	data->full = 0;
+	data->start = 0;
 	pthread_mutex_init(&data->print_lock, NULL);
 	pthread_mutex_init(&data->death_lock, NULL);
 	pthread_mutex_init(&data->fool, NULL);
+	pthread_mutex_init(&data->starty, NULL);
 	i = 0;
 	while (i < num_p)
 	{

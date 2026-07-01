@@ -6,7 +6,7 @@
 /*   By: mprokope <mprokope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 18:20:40 by mprokope          #+#    #+#             */
-/*   Updated: 2026/06/30 21:29:36 by mprokope         ###   ########.fr       */
+/*   Updated: 2026/07/01 20:49:55 by mprokope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ int	fullnes_check(t_philo *philo)
 	i = 0;
 	while (i < philo->data->info->number_of_philos)
 	{
-		pthread_mutex_lock(&philo->last_meal_lock);
+		pthread_mutex_lock(&philo[i].last_meal_lock);
 		if (philo[i].meals_eaten < philo->data->info->to_be_full)
 		{
-			pthread_mutex_unlock(&philo->last_meal_lock);
+			pthread_mutex_unlock(&philo[i].last_meal_lock);
 			return (1);
 		}
-		pthread_mutex_unlock(&philo->last_meal_lock);
+		pthread_mutex_unlock(&philo[i].last_meal_lock);
 		i++;
 	}
 	return (0);
@@ -76,7 +76,7 @@ void	*monitoring(void *arg)
 			if (full == philo->data->info->number_of_philos)
 				return (exterminate(philo->data), NULL);
 		}
-		usleep(500);
+		usleep(50);
 	}
 	return (NULL);
 }

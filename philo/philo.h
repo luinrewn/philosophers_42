@@ -6,7 +6,7 @@
 /*   By: mprokope <mprokope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 15:47:21 by mprokope          #+#    #+#             */
-/*   Updated: 2026/06/30 21:19:26 by mprokope         ###   ########.fr       */
+/*   Updated: 2026/07/01 23:35:10 by mprokope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct s_data
 	pthread_mutex_t	print_lock;
 	pthread_mutex_t	death_lock;
 	long			full;
+	long			start;
+	pthread_mutex_t	starty;
 	pthread_mutex_t	fool;
 	int				dead;
 	t_info			*info;
@@ -66,7 +68,7 @@ void	clean_up(t_philo *philo, long num_p);
 
 //Time Fucntions
 long	get_ms(void);
-void	better_sleep(long to_sleep);
+void	better_sleep(long to_sleep, t_philo *philo);
 
 //Threads
 int		create_threads(pthread_t **thr, long num, t_philo *philo);
@@ -79,5 +81,7 @@ void	*philo_routine(void *arg);
 void	*monitoring(void *arg);
 int		dead_check(t_data *data);
 void	is_fool(t_philo *philo);
+void	is_start(t_philo *philo);
+void	sleep_think(t_philo *philo);
 
 #endif

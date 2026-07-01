@@ -1,1 +1,7 @@
 tags
+*.o
+*.d
+notes
+.gitignore
+philo
+42-philosophers-tester
