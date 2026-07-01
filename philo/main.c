@@ -6,7 +6,7 @@
 /*   By: mprokope <mprokope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 19:59:23 by mprokope          #+#    #+#             */
-/*   Updated: 2026/07/01 23:35:01 by mprokope         ###   ########.fr       */
+/*   Updated: 2026/07/02 00:50:15 by mprokope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	setup_time(t_philo *philo)
 		philo[i++].last_meal = start;
 	}
 }
-
 
 void	sleep_think(t_philo *philo)
 {

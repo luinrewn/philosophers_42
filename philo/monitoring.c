@@ -6,7 +6,7 @@
 /*   By: mprokope <mprokope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 18:20:40 by mprokope          #+#    #+#             */
-/*   Updated: 2026/07/01 20:49:55 by mprokope         ###   ########.fr       */
+/*   Updated: 2026/07/02 00:25:32 by mprokope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	exterminate(t_data *data)
 int	check_if_starved(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->last_meal_lock);
-	if (get_ms() - philo->last_meal > philo->data->info->time_to_die)
+	if (get_ms() - philo->last_meal >= philo->data->info->time_to_die)
 	{
 		pthread_mutex_unlock(&philo->last_meal_lock);
 		print_state(philo, "died");

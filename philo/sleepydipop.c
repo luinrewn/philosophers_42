@@ -6,7 +6,7 @@
 /*   By: mprokope <mprokope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 16:45:30 by mprokope          #+#    #+#             */
-/*   Updated: 2026/07/01 22:52:34 by mprokope         ###   ########.fr       */
+/*   Updated: 2026/07/02 00:51:15 by mprokope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	is_start(t_philo *philo)
 		if (philo->data->start)
 		{
 			pthread_mutex_unlock(&philo->data->starty);
-			break ;	
+			break ;
 		}
 		pthread_mutex_unlock(&philo->data->starty);
 		usleep(100);
@@ -48,7 +48,7 @@ long	get_ms(void)
 void	better_sleep(long to_sleep, t_philo *philo)
 {
 	long	start;
-	
+
 	start = get_ms();
 	while (!dead_check(philo->data))
 	{
